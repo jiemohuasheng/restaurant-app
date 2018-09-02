@@ -1,28 +1,65 @@
-.App {
+*{
+    padding: 0;
+    margin: 0;
+}
+body {
+  font-family: "Times New Roman", Times, serif;
+  line-height: 1.4;
+  //background: url('https://www.bevspot.com/wp-content/uploads/2015/10/bigstock-Empty-Wood-Table-And-Coffee-Sh-83334128-1440x887.jpg') 0 0 no-repeat;
+}
+.container{
+  padding:50px;
+  color: #222;
+}
+
+.title-container{
   text-align: center;
+  margin-bottom: 5%;
+}
+.form-container{
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+input[type="text"] {
+  background-color: transparent;
+  border: 0;
+  border-bottom: solid 1px #d32323;
+  width: 50%;
+  padding-bottom: 4px;
+  font-weight: lighter;
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+  margin-left: 20%;
+  font-size: 20px;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+input[type="text"] { 
+    outline: none;
 }
 
-.App-title {
-  font-size: 1.5em;
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px #2c3e50 inset;
+    -webkit-text-fill-color: #fff !important;
 }
 
-.App-intro {
-  font-size: large;
+button {
+  border: 0;
+  padding: 8px 20px;
+  //margin: 0 2px;
+  border-radius: 2px;
+  font-weight: lighter;
+  letter-spacing: 1px;
+  font-size: 15px;
+  //cursor: pointer;
+  background-color: #d32323;
+  color: #fff;
+  font-weight: 100;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+button:active {
+  outline: none;
 }

@@ -42,19 +42,19 @@ class App extends React.Component{
 
       //setState method
       this.setState({
-      name: data.restaurants[0].name,
-      address: data.restaurants[0].address,
-      price: data.restaurants[0].price,
-      //rating: data.restaurants.aggregate_score,
-      error: ""
+        name: data.restaurants[0].name,
+        address: data.restaurants[0].address,
+        price: data.restaurants[0].price,
+        //rating: data.restaurants.aggregate_score,
+        error: ""
       });
     }else{
       this.setState({
-      name: undefined,
-      address: undefined,
-      price: undefined,
-      //rating: undefined,
-      error: "Please enter the city."
+        name: undefined,
+        address: undefined,
+        price: undefined,
+        //rating: undefined,
+        error: "Please enter the city name."
       });
     }
   }
@@ -62,15 +62,32 @@ class App extends React.Component{
   render(){
     return(
         <div>
-          <Titles />
-          <Form getRestaurant = { this.getRestaurant } />
-          <Restaurants 
-            name = { this.state.name }
-            address = { this.state.address }
-            price = { this.state.price}
-            //rating = { this.state.aggregate_score}
-            error = { this.state.error }
-          />
+          <div className="wrapper">
+            <div className="main">
+              <div className="container">
+                
+                  <div className="title-container">
+                    <Titles />
+                  </div>
+
+                  <div class="form-container">
+                    <Form getRestaurant = { this.getRestaurant } />
+                  </div>
+
+                  <div class="restaurants-container row">
+                    <div class="col-md-4">
+                      <Restaurants
+                        name = { this.state.name }
+                        address = { this.state.address }
+                        price = { this.state.price}
+                        //rating = { this.state.aggregate_score}
+                        error = { this.state.error }
+                      />
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
         </div>
     );
   }
