@@ -13,14 +13,10 @@ const API_KEY = "a1c7b724-0a20-42be-9dd4-23d873db1f9b";
 class App extends React.Component{
   //use state object to show the data on the screen
     state = {
-      name: undefined,
-      address: undefined,
-      price: undefined,
-      //rating: undefined,
-      error: undefined
+      restaurants: [],
     }
 
-  //create a arrow function to get the data
+  //create an arrow function to get the data
   getRestaurant = async (e) => {
     
     //prevent the full page refresh
@@ -35,31 +31,22 @@ class App extends React.Component{
     //convert the data that get from api_call to json file
     const data = await api_call.json();
 
-    //if you enterd city, show the data
+    //if enter city, show the data
     if(city){
-      //show the data
-      console.log(data);
-
-      //setState method
+      
+      //setState method to update state
       this.setState({
-        name: data.restaurants[0].name,
-        address: data.restaurants[0].address,
-        price: data.restaurants[0].price,
-        //rating: data.restaurants.aggregate_score,
-        error: ""
+        restaurants: data.restaurants,
       });
     }else{
       this.setState({
-        name: undefined,
-        address: undefined,
-        price: undefined,
-        //rating: undefined,
-        error: "Please enter the city name."
+        restaurants: [],
       });
     }
   }
 
   render(){
+    const { restaurants } = this.state;
     return(
         <div>
           <div className="wrapper">
@@ -70,20 +57,30 @@ class App extends React.Component{
                     <Titles />
                   </div>
 
-                  <div class="form-container">
+                  <div className="form-container">
                     <Form getRestaurant = { this.getRestaurant } />
                   </div>
 
-                  <div class="restaurants-container row">
-                    <div class="col-md-4">
-                      <Restaurants
-                        name = { this.state.name }
-                        address = { this.state.address }
-                        price = { this.state.price}
-                        //rating = { this.state.aggregate_score}
-                        error = { this.state.error }
-                      />
-                    </div>
+                  <div className="restaurants-container row">
+
+                    {/* use index to visit single data in restaurants
+                        @restaurants  all restaurants
+                        @restaurant   every sigle restaurant
+                        @key          the unique id of restaurant
+                    */}
+                 
+                    { restaurants.map((restaurant, index) => {
+                      return <div className="col-md-4 restaurant_box" key={restaurant.id}>
+                                <Restaurants
+                                  name = { restaurant.name }
+                                  address = { restaurant.address }
+                                  price = { restaurant.price}
+                                  image_url = { restaurant.image_url }
+                                />
+                             </div>
+                      })
+                    }
+                    
                   </div>
               </div>
             </div>
