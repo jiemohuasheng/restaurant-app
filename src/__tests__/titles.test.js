@@ -1,3 +1,5 @@
+//test the Titles component
+
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 import { expect } from 'chai';
