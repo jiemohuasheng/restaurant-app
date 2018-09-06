@@ -5,16 +5,16 @@ class Restaurants extends React.Component{
 		return(
 			<div>
 				{
-					this.props.name && <p>Name: {this.props.name}</p>
+					this.props.image_url && <img src={this.props.image_url} />
+				}
+				{
+					this.props.name && <p><b>{this.props.name}</b></p>
 				}
 				{
 					this.props.address && <p>Address: {this.props.address}</p>
 				}
 				{
-					this.props.price && <p>Price: {this.props.price}</p>
-				}
-				{
-					this.props.error && <p>{this.props.error}</p>
+					this.props.price && <p>Price: ${this.props.price}</p>
 				}
 			</div>
 		);
